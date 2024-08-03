@@ -32,3 +32,7 @@ def generate_chart():
 ```
 
 This will return a `Div` that contains your rendered altair chart.
+
+## Roadmap
+
+This repository is originally meant to be simple helper, but if there are more advanced use-cases to consider I will gladly consider them. Please start a conversation by opening up an issue before starting a PR though.
