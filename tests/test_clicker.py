@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import altair as alt
 import numpy as np
+from fh_altair import altair2fasthml
 
 app, rt = fast_app(
     hdrs = [
