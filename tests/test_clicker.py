@@ -1,10 +1,8 @@
 from fasthtml.common import * 
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
 import altair as alt
 import numpy as np
-from uuid import uuid4
 
 app, rt = fast_app(
     hdrs = [
