@@ -5,7 +5,6 @@ import pandas as pd
 import altair as alt
 
 app, rt = fast_app(hdrs=altair_headers)  
-alt.renderers.set_embed_options(actions={})
 
 count = 0
 plotdata = []
