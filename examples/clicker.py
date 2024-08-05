@@ -5,7 +5,7 @@ import pandas as pd
 import altair as alt
 
 app, rt = fast_app(hdrs=altair_headers)  
-
+alt.renderers.set_embed_options(actions=False)
 
 count = 0
 plotdata = []
@@ -26,7 +26,7 @@ def home():
     )
 
 
-@app.get("/increment/")
+@app.get("/increment")
 def increment():
     global plotdata, count
     count += 1
