@@ -1,24 +1,24 @@
-from fh_altair import matplotlib2fasthtml
+from fh_altair import altair2fasthml, altair_headers
 from fasthtml.common import * 
 import numpy as np
-import matplotlib.pylab as plt
+import pandas as pd
+import altair as alt
 
-app, rt = fast_app()  
+app, rt = fast_app(hdrs=altair_headers)  
 
 
 count = 0
 plotdata = []
 
-@matplotlib2fasthtml
 def generate_chart():
-    global plotdata
-    plt.plot(range(len(plotdata)), plotdata)
-
+    pltr = pd.DataFrame({'y': plotdata, 'x': range(len(plotdata))})
+    chart = alt.Chart(pltr).mark_line().encode(x='x', y='y').properties(width=400, height=200)
+    return altair2fasthml(chart)
 
 @app.get("/")
 def home():
-    return Title("Matplotlib Demo"), Main(
-        H1("Matplotlib Demo"),
+    return Title("Altair Demo"), Main(
+        H1("Altair Demo"),
         P("Nothing too fancy, but still kind of fancy."),
         Div(f"You have pressed the button {count} times.", id="chart"),
         Button("Increment", hx_get="/increment", hx_target="#chart", hx_swap="innerHTML"),
