@@ -12,4 +12,5 @@ altair_headers = [
 def altair2fasthml(chart):
     jsonstr = chart.to_json()
     chart_id = f'uniq-{uuid4()}'
-    return Div(Script(f"vegaEmbed('#{chart_id}', {jsonstr});"), id=chart_id)
+    settings = "{actions: false}"
+    return Div(Script(f"vegaEmbed('#{chart_id}', {jsonstr}, {settings});"), id=chart_id)
