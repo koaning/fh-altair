@@ -10,6 +10,12 @@ altair_headers = [
 
 
 def altair2fasthml(chart):
+    """This is the version with bad spelling"""
+    print("You have imported `altair2fasthml` which is a misspelled function. Sorry about that! It will be deprecated in favour of `altair2fasthtml` in a later release.")
+    return altair2fasthtml(chart)
+
+
+def altair2fasthtml(chart):
     jsonstr = chart.to_json()
     chart_id = f'uniq-{uuid4()}'
     settings = "{actions: false}"

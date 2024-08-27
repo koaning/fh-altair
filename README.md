@@ -23,12 +23,12 @@ app, rt = fast_app(
 This ensures that the required javascript and css files are always loaded. From here all you need to do is wrap your altair chart with our function and you are good to go!
 
 ```python
-from fh_altair import altair2fasthml
+from fh_altair import altair2fasthtml
 
 def generate_chart():
     pltr = pd.DataFrame({'y': [1, 2, 3, 2], 'x': [3, 1, 2, 4]})
     chart = alt.Chart(pltr).mark_line().encode(x='x', y='y').properties(width=400, height=200)
-    return altair2fasthml(chart)
+    return altair2fasthtml(chart)
 ```
 
 This will return a `Div` that contains your rendered altair chart.
