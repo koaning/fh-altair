@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import altair as alt
 import numpy as np
-from fh_altair import altair2fasthml
+from fh_altair import altair2fasthtml
 
 app, rt = fast_app(
     hdrs = [
@@ -20,7 +20,7 @@ alt.renderers.set_embed_options(actions=False)
 def generate_chart():   
     pltr = pd.DataFrame({'y': plotdata, 'x': np.arange(count) + 1.0})
     chart = alt.Chart(pltr).mark_line().encode(x='x', y='y').properties(width=400, height=200)
-    return altair2fasthml(chart)
+    return altair2fasthtml(chart)
 
 @app.get("/")
 def home():

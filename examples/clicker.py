@@ -1,4 +1,4 @@
-from fh_altair import altair2fasthml, altair_headers
+from fh_altair import altair2fasthtml, altair_headers
 from fasthtml.common import * 
 import numpy as np
 import pandas as pd
@@ -12,7 +12,7 @@ plotdata = []
 def generate_chart():
     pltr = pd.DataFrame({'y': plotdata, 'x': range(len(plotdata))})
     chart = alt.Chart(pltr).mark_line().encode(x='x', y='y').properties(width=400, height=200)
-    return altair2fasthml(chart)
+    return altair2fasthtml(chart)
 
 @app.get("/")
 def home():
