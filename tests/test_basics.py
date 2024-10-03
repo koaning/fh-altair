@@ -1,5 +1,6 @@
 import altair as alt
 import pandas as pd
+from fasthtml.common import to_xml
 
 from fh_altair import altair2fasthtml
 
@@ -23,7 +24,7 @@ def test_vega_options_passed_to_vegaEmbed():
         .encode(x="x", y="y")
         .properties(width=400, height=200)
     )
-    vega_embed_call = altair2fasthtml(
-        chart, vega_options={"renderer": "svg", "actions": True}
-    ).__str__()
+    vega_embed_call = to_xml(
+        altair2fasthtml(chart, vega_options={"renderer": "svg", "actions": True})
+    )
     assert '{"renderer": "svg", "actions": true}' in vega_embed_call
