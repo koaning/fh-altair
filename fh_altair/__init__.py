@@ -1,3 +1,4 @@
+import json
 from uuid import uuid4
 
 from fasthtml.common import Div, Script
@@ -17,8 +18,10 @@ def altair2fasthml(chart):
     return altair2fasthtml(chart)
 
 
-def altair2fasthtml(chart):
+def altair2fasthtml(chart, vega_options={"actions": False}):
     jsonstr = chart.to_json()
-    chart_id = f'uniq-{uuid4()}'
-    settings = "{actions: false}"
-    return Div(Script(f"vegaEmbed('#{chart_id}', {jsonstr}, {settings});"), id=chart_id)
+    chart_id = f"uniq-{uuid4()}"
+    return Div(
+        Script(f"vegaEmbed('#{chart_id}', {jsonstr}, {json.dumps(vega_options)});"),
+        id=chart_id,
+    )
