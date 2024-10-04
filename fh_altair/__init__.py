@@ -19,6 +19,22 @@ def altair2fasthml(chart):
 
 
 def altair2fasthtml(chart, vega_options={"actions": False}):
+    """Convert an Altair chart to a FastHTML FT component
+
+    Parameters
+    ----------
+    chart : altair.Chart
+        An Altair chart
+    vega_options : dict, optional
+        Options dictionary passed to the vegaEmbed function, by default {"actions": False}
+        which hides the Vega action menu.
+
+    Returns
+    -------
+    fastcore.xml.FT
+        A FastHTML FT component containing both the target div and embedding script
+
+    """
     jsonstr = chart.to_json()
     chart_id = f"uniq-{uuid4()}"
     return Div(
