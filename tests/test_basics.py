@@ -22,8 +22,17 @@ def test_no_err(sample_chart):
     return altair2fasthtml(sample_chart)
 
 
-def test_vega_options_passed_to_vegaEmbed(sample_chart):
+@pytest.mark.parametrize(
+    "renderer,actions",
+    [("svg", True), ("svg", False), ("canvas", True), ("canvas", False)],
+)
+def test_vega_options(sample_chart, renderer, actions):
     vega_embed_call = to_xml(
-        altair2fasthtml(sample_chart, vega_options={"renderer": "svg", "actions": True})
+        altair2fasthtml(
+            sample_chart, vega_options={"renderer": renderer, "actions": actions}
+        )
     )
-    assert '{"renderer": "svg", "actions": true}' in vega_embed_call
+    assert (
+        f'"renderer": "{renderer}", "actions": {str(actions).lower()}'
+        in vega_embed_call
+    )
