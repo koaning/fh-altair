@@ -34,6 +34,7 @@ def generate_chart():
 This will return a `Div` that contains your rendered altair chart.
 
 ### Custom Vega options
+
 Under the hood, `altair2fasthtml` makes a call to the `vegaEmbed` javascript library. The `vegaEmbed` javascript library accepts [various options](https://github.com/vega/vega-embed?tab=readme-ov-file#options) that alter the rendered chart. You can optionally pass custom Vega options like so:
 
 ```python
