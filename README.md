@@ -45,6 +45,15 @@ altair2fasthtml(chart, vega_options={"renderer":"svg"})
 altair2fasthtml(chart, vega_options={"actions":True})
 ```
 
+### Responsive width
+
+As shown in the sample code above, you can control the width and height of your chart using `alt.Chart(...).properties(width, height)`. Additionally, if you would like the chart to dynamically take up the full width of its parent container, you can pass `full_width=True` to `altair2fasthtml` like so:
+
+```python
+# Renders a chart taking up the full width of the parent container
+altair2fasthtml(chart, full_width=True)
+```
+
 ## Roadmap
 
 This repository is originally meant to be simple helper, but if there are more advanced use-cases to consider I will gladly consider them. Please start a conversation by opening up an issue before starting a PR though.
