@@ -34,3 +34,11 @@ def test_vega_options(sample_chart, renderer, actions):
         )
     )
     assert f'"renderer": "{renderer}", "actions": {str(actions).lower()}' in result_xml
+
+
+@pytest.mark.parametrize(
+    "full_width,expected", [(True, '"width": "container"'), (False, '"width": 400')]
+)
+def test_full_width(sample_chart, full_width, expected):
+    result_xml = to_xml(altair2fasthtml(sample_chart, full_width=full_width))
+    assert expected in result_xml
