@@ -33,6 +33,18 @@ def generate_chart():
 
 This will return a `Div` that contains your rendered altair chart.
 
+### Custom Vega options
+
+Under the hood, `altair2fasthtml` makes a call to the `vegaEmbed` javascript library. The `vegaEmbed` javascript library accepts [various options](https://github.com/vega/vega-embed?tab=readme-ov-file#options) that alter the rendered chart. You can optionally pass custom Vega options like so:
+
+```python
+# To render your chart as a svg instead of the default canvas element
+altair2fasthtml(chart, vega_options={"renderer":"svg"})
+
+# To render your chart with action links turned on (by default action links are disabled) 
+altair2fasthtml(chart, vega_options={"actions":True})
+```
+
 ## Roadmap
 
 This repository is originally meant to be simple helper, but if there are more advanced use-cases to consider I will gladly consider them. Please start a conversation by opening up an issue before starting a PR though.
